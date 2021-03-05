@@ -1,30 +1,56 @@
 #!/usr/bin/env ruby
 
-def board(number)
-  puts "\n#{number[0]} | #{number[1]} | #{number[2]}"
-  puts "---------"
-  puts "#{number[3]} | #{number[4]} | #{number[5]}"
-  puts "---------"
-  puts "#{number[6]} | #{number[7]} | #{number[8]}"
+def display_board(board)
+  puts "\n#{board[0]} | #{board[1]} | #{board[2]}"
+  puts '---------'
+  puts "#{board[3]} | #{board[4]} | #{board[5]}"
+  puts '---------'
+  puts "#{board[6]} | #{board[7]} | #{board[8]}"
 end
-number = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-board(number)
+board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+display_board(board)
 
 puts "\nWelcome to Tic Tac Toe!"
 
-puts "\nPlayer 1, what's your name?"
+puts "\nPlayer 1, what is your name?"
 player1 = gets.chomp.capitalize
-puts "\nPlayer 2, what's your name?"
+puts "\nPlayer2, what is your name?"
 player2 = gets.chomp.capitalize
 puts "\nHello, #{player1} and #{player2}!"
-
 puts "\n#{player1} will be X, and #{player2} will be O."
-puts "\nLet's Go!"
 
-puts "\nIt's #{player1}'s turn!"
-puts "Please select an available cell from the board..."
-player1move = gets.chomp.to_i - 1
+puts "\nLet's begin!"
 
-puts "\nIt's #{player2}'s turn!"
-puts "Please select an available cell from the board..."
-player2move = gets.chomp.to_i - 1
+puts "\n#{player1}, please select an available cell from the board..."
+player1move = gets.chomp.to_i
+if player1move.between?(0, 8)
+  puts "#{player1} selected #{player1move}."
+else
+  puts 'Invalid move! Please select a number between 0 and 8...'
+  player1move = gets.chomp.to_i
+end
+
+puts "\n#{player2}, please select an available cell from the board..."
+player2move = gets.chomp.to_i
+if player2move.between?(0, 8)
+  puts "#{player2} selected #{player2move}"
+else
+  puts 'Invalid move! Please select a number between 0 and 8...'
+  player2move = gets.chomp.to_i
+end
+
+while player1move == player2move
+  puts 'Cell taken! Please select an available cell from the board...'
+  answer = gets.chomp.to_i
+  puts "Youve selected #{answer}"
+end
+
+WINNING_COMBOS = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+].freeze
+
+if player1 == WINNING_COMBOS || player2 == WINNING_COMBOS
+  puts 'Winner!'
+else
+  puts 'Draw!'
+end
