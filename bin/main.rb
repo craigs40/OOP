@@ -23,22 +23,18 @@ puts "\nLet's begin!"
 
 puts "\n#{player1}, please select an available cell from the board..."
 player1move = gets.chomp.to_i
-if player1move.between?(0, 8)
-  puts "#{player1} selected #{player1move}."
-end
+puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
 
-while !player1move.between?(0, 8)
+until !player1move.between?(0, 8)
   puts 'Invalid move! Please select a number between 0 and 8...'
   player1move = gets.chomp.to_i
 end
 
 puts "\n#{player2}, please select an available cell from the board..."
 player2move = gets.chomp.to_i
-if player2move.between?(0, 8)
-  puts "#{player2} selected #{player2move}"
-end
+puts "#{player2} selected #{player2move}" if player2move.between?(0, 8)
 
-while !player2move.between?(0, 8)
+until !player2move.between?(0, 8)
   puts 'Invalid move! Please select a number between 0 and 8...'
   player2move = gets.chomp.to_i
 end
