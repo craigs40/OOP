@@ -25,7 +25,9 @@ puts "\n#{player1}, please select an available cell from the board..."
 player1move = gets.chomp.to_i
 if player1move.between?(0, 8)
   puts "#{player1} selected #{player1move}."
-else
+end
+
+while !player1move.between?(0, 8)
   puts 'Invalid move! Please select a number between 0 and 8...'
   player1move = gets.chomp.to_i
 end
@@ -34,23 +36,25 @@ puts "\n#{player2}, please select an available cell from the board..."
 player2move = gets.chomp.to_i
 if player2move.between?(0, 8)
   puts "#{player2} selected #{player2move}"
-else
+end
+
+while !player2move.between?(0, 8)
   puts 'Invalid move! Please select a number between 0 and 8...'
   player2move = gets.chomp.to_i
 end
 
-while player1move == player2move
+if player1move == player2move
   puts 'Cell taken! Please select an available cell from the board...'
   answer = gets.chomp.to_i
-  puts "Youve selected #{answer}"
+  puts "You've selected #{answer}"
+end
+
+if player1move == WINNING_COMBOS || player2move == WINNING_COMBOS
+  puts 'Winner!'
+else
+  puts 'Draw!'
 end
 
 WINNING_COMBOS = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
 ].freeze
-
-if player1 == WINNING_COMBOS || player2 == WINNING_COMBOS
-  puts 'Winner!'
-else
-  puts 'Draw!'
-end
