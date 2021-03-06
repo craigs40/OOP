@@ -25,14 +25,14 @@ puts "\n#{player1}, please select an available cell from the board..."
 player1move = gets.chomp.to_i
 puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
 
-puts 'Invalid move! Please select a number between 0 and 8...' while !player1move.between?(0, 8)
+puts 'Invalid move! Please select a number between 0 and 8...' unless player1move.between?(0, 8)
 player1move = gets.chomp.to_i
 
 puts "\n#{player2}, please select an available cell from the board..."
 player2move = gets.chomp.to_i
 puts "#{player2} selected #{player2move}" if player2move.between?(0, 8)
 
-puts 'Invalid move! Please select a number between 0 and 8...' while !player2move.between?(0, 8)
+puts 'Invalid move! Please select a number between 0 and 8...' unless player2move.between?(0, 8)
 player2move = gets.chomp.to_i
 
 if player1move == player2move
