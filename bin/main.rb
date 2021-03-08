@@ -14,8 +14,18 @@ puts "\nWelcome to Tic Tac Toe!"
 
 puts "\nPlayer 1, what is your name?"
 player1 = gets.chomp.capitalize
-puts "\nPlayer2, what is your name?"
+while player1.empty?
+  puts "Error! Please enter your name..."
+  player1 = gets.chomp.capitalize
+end
+
+puts "\nPlayer 2, what is your name?"
 player2 = gets.chomp.capitalize
+while player2.empty?
+  puts "Error! Please enter your name..."
+  player2 = gets.chomp.capitalize
+end
+
 puts "\nHello, #{player1} and #{player2}!"
 puts "\n#{player1} will be X, and #{player2} will be O."
 
@@ -23,17 +33,21 @@ puts "\nLet's begin!"
 
 puts "\n#{player1}, please select an available cell from the board..."
 player1move = gets.chomp.to_i
-puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
-
-puts 'Invalid move! Please select a number between 0 and 8...' unless player1move.between?(0, 8)
-player1move = gets.chomp.to_i
+if player1move.between?(0, 8)
+  puts "#{player1} selected #{player1move}."
+else
+  puts 'Invalid move! Please select a number between 0 and 8...'
+  player1move = gets.chomp.to_i
+end
 
 puts "\n#{player2}, please select an available cell from the board..."
 player2move = gets.chomp.to_i
-puts "#{player2} selected #{player2move}" if player2move.between?(0, 8)
-
-puts 'Invalid move! Please select a number between 0 and 8...' unless player2move.between?(0, 8)
-player2move = gets.chomp.to_i
+if player2move.between?(0, 8)
+  puts "#{player2} selected #{player2move}"
+else
+  puts 'Invalid move! Please select a number between 0 and 8...'
+  player2move = gets.chomp.to_i
+end
 
 if player1move == player2move
   puts 'Cell taken! Please select an available cell from the board...'
@@ -50,3 +64,9 @@ end
 WINNING_COMBOS = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
 ].freeze
+
+if player1move == WINNING_COMBOS || player2move == WINNING_COMBOS
+  puts "Winner!"
+else
+  puts "Draw!"
+end
