@@ -29,14 +29,17 @@ end
 puts "\nHello, #{player1} and #{player2}!"
 puts "\n#{player1} will be X, and #{player2} will be O."
 
-puts "\nLet's begin!"
+puts "\nPress ENTER to begin!"
 
 game_on = true
 turn = 1
+player2move = gets.chomp.to_i - 1
+
 while game_on
   break if turn >= 5
 
   turn += 1
+
   puts "\n#{player1}, please select an available cell from the board..."
   player1move = gets.chomp.to_i - 1
   until player1move.between?(0, 8)
@@ -44,6 +47,13 @@ while game_on
     player1move = gets.chomp.to_i - 1
   end
   puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
+  if player1move == player2move
+    puts 'Cell taken! Please select an available cell from the board...'
+    player1move = gets.chomp.to_i - 1
+    puts "You've selected #{player1move}"
+  end
+
+  display_board(board)
 
   puts "\n#{player2}, please select an available cell from the board..."
   player2move = gets.chomp.to_i - 1
@@ -52,20 +62,22 @@ while game_on
     player2move = gets.chomp.to_i - 1
   end
   puts "#{player1} selected #{player1move}." if player2move.between?(0, 8)
-end
+  if player1move == player2move || player2move == player1move
+    puts 'Cell taken! Please select an available cell from the board...'
+    answer = gets.chomp.to_i - 1
+    puts "You've selected #{answer}"
+  end
 
-if player1move == player2move
-  puts 'Cell taken! Please select an available cell from the board...'
-  answer = gets.chomp.to_i - 1
-  puts "You've selected #{answer}"
+  display_board(board)
+
 end
 
 WINNING_COMBOS = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
 ].freeze
 
-if player1move == WINNING_COMBOS || player2move == WINNING_COMBOS
-  puts 'Winner!'
+if player1move == WINNING_COMBOS.each || player2move == WINNING_COMBOS.each
+  puts "\nWinner!"
 else
-  puts 'Draw!'
+  puts "\nDraw!"
 end
