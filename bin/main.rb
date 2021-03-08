@@ -62,10 +62,10 @@ while game_on
     player2move = gets.chomp.to_i - 1
   end
   puts "#{player1} selected #{player1move}." if player2move.between?(0, 8)
-  if player1move == player2move || player2move == player1move
+  if player2move == player1move
     puts 'Cell taken! Please select an available cell from the board...'
-    answer = gets.chomp.to_i - 1
-    puts "You've selected #{answer}"
+    player2move = gets.chomp.to_i - 1
+    puts "You've selected #{player2move}"
   end
 
   display_board(board)
