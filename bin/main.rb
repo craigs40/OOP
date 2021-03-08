@@ -15,14 +15,14 @@ puts "\nWelcome to Tic Tac Toe!"
 puts "\nPlayer 1, what is your name?"
 player1 = gets.chomp.capitalize
 while player1.empty?
-  puts "Error! Please enter your name..."
+  puts 'Error! Please enter your name...'
   player1 = gets.chomp.capitalize
 end
 
 puts "\nPlayer 2, what is your name?"
 player2 = gets.chomp.capitalize
 while player2.empty?
-  puts "Error! Please enter your name..."
+  puts 'Error! Please enter your name...'
   player2 = gets.chomp.capitalize
 end
 
@@ -31,34 +31,33 @@ puts "\n#{player1} will be X, and #{player2} will be O."
 
 puts "\nLet's begin!"
 
-puts "\n#{player1}, please select an available cell from the board..."
-player1move = gets.chomp.to_i
-if player1move.between?(0, 8)
-  puts "#{player1} selected #{player1move}."
-else
-  puts 'Invalid move! Please select a number between 0 and 8...'
-  player1move = gets.chomp.to_i
-end
+game_on = true
+turn = 1
+while game_on
+  break if turn >= 5
 
-puts "\n#{player2}, please select an available cell from the board..."
-player2move = gets.chomp.to_i
-if player2move.between?(0, 8)
-  puts "#{player2} selected #{player2move}"
-else
-  puts 'Invalid move! Please select a number between 0 and 8...'
-  player2move = gets.chomp.to_i
+  turn += 1
+  puts "\n#{player1}, please select an available cell from the board..."
+  player1move = gets.chomp.to_i - 1
+  until player1move.between?(0, 8)
+    puts 'Invalid move! Please select a number between 1 and 8...'
+    player1move = gets.chomp.to_i - 1
+  end
+  puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
+
+  puts "\n#{player2}, please select an available cell from the board..."
+  player2move = gets.chomp.to_i - 1
+  until player2move.between?(0, 8)
+    puts 'Invalid move! Please select a number between 1 and 8...'
+    player2move = gets.chomp.to_i - 1
+  end
+  puts "#{player1} selected #{player1move}." if player2move.between?(0, 8)
 end
 
 if player1move == player2move
   puts 'Cell taken! Please select an available cell from the board...'
-  answer = gets.chomp.to_i
+  answer = gets.chomp.to_i - 1
   puts "You've selected #{answer}"
-end
-
-if player1move == WINNING_COMBOS || player2move == WINNING_COMBOS
-  puts 'Winner!'
-else
-  puts 'Draw!'
 end
 
 WINNING_COMBOS = [
@@ -66,7 +65,7 @@ WINNING_COMBOS = [
 ].freeze
 
 if player1move == WINNING_COMBOS || player2move == WINNING_COMBOS
-  puts "Winner!"
+  puts 'Winner!'
 else
-  puts "Draw!"
+  puts 'Draw!'
 end
