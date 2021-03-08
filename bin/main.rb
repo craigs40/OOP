@@ -7,7 +7,7 @@ def display_board(board)
   puts '---------'
   puts "#{board[6]} | #{board[7]} | #{board[8]}"
 end
-board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 display_board(board)
 
 puts "\nWelcome to Tic Tac Toe!"
@@ -33,7 +33,7 @@ puts "\nPress ENTER to begin!"
 
 game_on = true
 turn = 1
-player2move = gets.chomp.to_i - 1
+player2move = gets.chomp.to_i
 
 while game_on
   break if turn >= 5
@@ -41,30 +41,30 @@ while game_on
   turn += 1
 
   puts "\n#{player1}, please select an available cell from the board..."
-  player1move = gets.chomp.to_i - 1
-  until player1move.between?(0, 8)
+  player1move = gets.chomp.to_i
+  until player1move.between?(1, 8)
     puts 'Invalid move! Please select a number between 1 and 8...'
-    player1move = gets.chomp.to_i - 1
+    player1move = gets.chomp.to_i
   end
   puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
   if player1move == player2move
     puts 'Cell taken! Please select an available cell from the board...'
-    player1move = gets.chomp.to_i - 1
+    player1move = gets.chomp.to_i
     puts "You've selected #{player1move}"
   end
 
   display_board(board)
 
   puts "\n#{player2}, please select an available cell from the board..."
-  player2move = gets.chomp.to_i - 1
-  until player2move.between?(0, 8)
+  player2move = gets.chomp.to_i
+  until player2move.between?(1, 8)
     puts 'Invalid move! Please select a number between 1 and 8...'
-    player2move = gets.chomp.to_i - 1
+    player2move = gets.chomp.to_i
   end
   puts "#{player1} selected #{player1move}." if player2move.between?(0, 8)
   if player2move == player1move
     puts 'Cell taken! Please select an available cell from the board...'
-    player2move = gets.chomp.to_i - 1
+    player2move = gets.chomp.to_i
     puts "You've selected #{player2move}"
   end
 
@@ -73,7 +73,7 @@ while game_on
 end
 
 WINNING_COMBOS = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+  [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]
 ].freeze
 
 if player1move == WINNING_COMBOS.each || player2move == WINNING_COMBOS.each
