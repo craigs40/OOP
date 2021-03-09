@@ -42,7 +42,7 @@ while game_on
 
   puts "\n#{player1}, please select an available cell from the board..."
   player1move = gets.chomp.to_i
-  until player1move.between?(1, 8)
+  until player1move.between?(1, 9)
     puts 'Invalid move! Please select a number between 1 and 8...'
     player1move = gets.chomp.to_i
   end
@@ -57,7 +57,7 @@ while game_on
 
   puts "\n#{player2}, please select an available cell from the board..."
   player2move = gets.chomp.to_i
-  until player2move.between?(1, 8)
+  until player2move.between?(1, 9)
     puts 'Invalid move! Please select a number between 1 and 8...'
     player2move = gets.chomp.to_i
   end
