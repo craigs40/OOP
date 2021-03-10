@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # game board display
 class Board
   def initialize
