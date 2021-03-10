@@ -1,5 +1,3 @@
-
-
 # game board display
 class Board
   def initialize
