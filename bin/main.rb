@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require_relative '../lib/board'
 require_relative '../lib/player'
 
-# promt the user for gameplay
-class Display
-  def display_board(board)
+# flow of the game
+class Gameplay
+  def display(board)
     puts "\n#{board[0]} | #{board[1]} | #{board[2]}"
     puts '---------'
     puts "#{board[3]} | #{board[4]} | #{board[5]}"
@@ -13,7 +14,7 @@ class Display
     puts "#{board[6]} | #{board[7]} | #{board[8]}"
   end
   board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  display_board(board)
+  display(board)
 
   puts "\nWelcome to Tic Tac Toe!"
 
@@ -35,10 +36,7 @@ class Display
   puts "\n#{player1} will be X, and #{player2} will be O."
 
   puts "\nLet's begin!"
-end
 
-# flow of the game
-class Gameplay
   game_on = true
   turn = 1
 
@@ -66,7 +64,7 @@ class Gameplay
     end
 
     board[player1move] = symbol1
-    display_board(board)
+    display(board)
 
     if WINNING_COMBOS.include? p1_array
       puts "\n#{player1} WINS!"
@@ -89,7 +87,7 @@ class Gameplay
     end
 
     board[player2move] = symbol2
-    display_board(board)
+    display(board)
 
     if WINNING_COMBOS.include? p2_array
       puts "\n#{player2} WINS!"
