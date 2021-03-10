@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 
+# player variables
 class Player
-  attr_reader :name, :symbol
-
   def initialize
-    @selection = []
-    @player2move = gets.chomp.to_i
+    @p1_array = []
+    @p2_array = []
   end
 end
