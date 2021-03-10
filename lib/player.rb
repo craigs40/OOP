@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 # player variables
 class Player
   def initialize

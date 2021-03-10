@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+
 
 # game board display
 class Board
