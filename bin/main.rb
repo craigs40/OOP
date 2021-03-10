@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/board'
+require_relative '../lib/player'
+
 # promt the user for gameplay
 class Display
   def display_board(board)
