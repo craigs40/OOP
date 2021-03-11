@@ -6,6 +6,13 @@
 
 In this project, we've built a Tic Tac Toe game. The main goal is to put into practice the main concepts of Object Oriented Programming. Particularly, classes and access to their attributes.
 
+Tic Tac Toe Rules:
+
+1. The game is played on a grid that's 3 squares by 3 squares. In this project, we've added numbers to the grid so the players can see which moves they will be making.
+2. Player 1 will always be X, and player 2 will always be O. Players will take turns putting their marks into the numbered squares.
+3. The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
+4. When it is certain that there cannot be a winner, the game ends in a tie.
+
 ## Built With
 
 - Ruby
