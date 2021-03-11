@@ -36,6 +36,13 @@ puts "\nLet's begin!"
 
 game_on = true
 turn = 1
+WINNING_COMBOS = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], [1, 4, 7],
+  [2, 5, 8], [0, 3, 6], [0, 4, 8], [2, 4, 6]
+].freeze
+p1_array = []
+p2_array = []
+player2move = []
 
 while game_on
   if turn >= 5
@@ -76,7 +83,7 @@ while game_on
     puts 'Invalid move! Please select a number between 0 and 8...'
     player2move = gets.chomp.to_i
   end
-  puts "\n#{player1} selected #{player1move}." if player2move.between?(0, 8)
+  puts "\n#{player2} selected #{player2move}." if player2move.between?(0, 8)
   if player2move == player1move
     puts 'Cell taken! Please select an available cell from the board...'
     player2move = gets.chomp.to_i
