@@ -2,7 +2,7 @@
 
 # Project: OOP (Object Oriented Programming)
 
-![screenshot](assets/tttss.png)
+![tttss](https://user-images.githubusercontent.com/71286979/110735930-be544b80-81f8-11eb-8741-78156b0c4521.png)
 
 In this project, we've built a Tic Tac Toe game. The main goal is to put into practice the main concepts of Object Oriented Programming. Particularly, classes and access to their attributes.
 
