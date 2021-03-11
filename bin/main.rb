@@ -1,14 +1,17 @@
 #!/usr/bin/env ruby
 
-def display_board(board)
+require_relative '../lib/board'
+require_relative '../lib/player'
+
+def display(board)
   puts "\n#{board[0]} | #{board[1]} | #{board[2]}"
   puts '---------'
   puts "#{board[3]} | #{board[4]} | #{board[5]}"
   puts '---------'
   puts "#{board[6]} | #{board[7]} | #{board[8]}"
 end
-board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-display_board(board)
+board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+display(board)
 
 puts "\nWelcome to Tic Tac Toe!"
 
@@ -29,55 +32,69 @@ end
 puts "\nHello, #{player1} and #{player2}!"
 puts "\n#{player1} will be X, and #{player2} will be O."
 
-puts "\nPress ENTER to begin!"
+puts "\nLet's begin!"
 
 game_on = true
 turn = 1
-player2move = gets.chomp.to_i
+WINNING_COMBOS = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], [1, 4, 7],
+  [2, 5, 8], [0, 3, 6], [0, 4, 8], [2, 4, 6]
+].freeze
+p1_array = []
+p2_array = []
+player2move = []
 
 while game_on
-  break if turn >= 5
+  if turn >= 5
+    puts "\nDraw!"
+    break
+  end
 
   turn += 1
 
   puts "\n#{player1}, please select an available cell from the board..."
   player1move = gets.chomp.to_i
-  until player1move.between?(1, 8)
-    puts 'Invalid move! Please select a number between 1 and 8...'
+  symbol1 = 'x'
+  p1_array << player1move
+  until player1move.between?(0, 8)
+    puts 'Invalid move! Please select a number between 0 and 8...'
     player1move = gets.chomp.to_i
   end
-  puts "#{player1} selected #{player1move}." if player1move.between?(0, 8)
+  puts "\n#{player1} selected #{player1move}." if player1move.between?(0, 8)
   if player1move == player2move
     puts 'Cell taken! Please select an available cell from the board...'
     player1move = gets.chomp.to_i
-    puts "You've selected #{player1move}"
+    puts "\nYou've selected #{player1move}"
   end
 
-  display_board(board)
+  board[player1move] = symbol1
+  display(board)
+
+  if WINNING_COMBOS.include? p1_array
+    puts "\n#{player1} WINS!"
+    break
+  end
 
   puts "\n#{player2}, please select an available cell from the board..."
   player2move = gets.chomp.to_i
-  until player2move.between?(1, 8)
-    puts 'Invalid move! Please select a number between 1 and 8...'
+  symbol2 = 'o'
+  p2_array << player2move
+  until player2move.between?(0, 8)
+    puts 'Invalid move! Please select a number between 0 and 8...'
     player2move = gets.chomp.to_i
   end
-  puts "#{player1} selected #{player1move}." if player2move.between?(0, 8)
+  puts "\n#{player2} selected #{player2move}." if player2move.between?(0, 8)
   if player2move == player1move
     puts 'Cell taken! Please select an available cell from the board...'
     player2move = gets.chomp.to_i
-    puts "You've selected #{player2move}"
+    puts "\nYou've selected #{player2move}"
   end
 
-  display_board(board)
+  board[player2move] = symbol2
+  display(board)
 
-end
-
-WINNING_COMBOS = [
-  [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]
-].freeze
-
-if player1move == WINNING_COMBOS.each || player2move == WINNING_COMBOS.each
-  puts "\nWinner!"
-else
-  puts "\nDraw!"
+  if WINNING_COMBOS.include? p2_array
+    puts "\n#{player2} WINS!"
+    break
+  end
 end
