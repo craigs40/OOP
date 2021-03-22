@@ -19,6 +19,12 @@ In this project, we've built a Tic Tac Toe game. The main goal is to put into pr
 3. The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
 4. When it is certain that there cannot be a winner, the game ends in a tie.
 
+## Testing the Code
+
+1. Open your Terminal or Command Prompt
+2. Navigate to the location of this clone
+3. run "rspec"
+
 ## Built With
 
 - Ruby
@@ -34,6 +40,11 @@ In this project, we've built a Tic Tac Toe game. The main goal is to put into pr
 - GitHub: [@memelopez](https://github.com/memelopez/)
 - Twitter: [@memelopez10](https://twitter.com/memelopez10)
 - LinkedIn: [Elmer Lopez](https://www.linkedin.com/in/elmer-lopez-51b187200/)
+
+👤 **Angela Cuahutle**
+
+- GitHub: [@angelacuahutle](https://github.com/angelacuahutle)
+- Twitter: [@AngelaCunaDev](https://twitter.com/AngelaCunaDev) 
 
 ## 🤝 Contributing
 
@@ -53,4 +64,3 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
-
