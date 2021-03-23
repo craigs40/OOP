@@ -6,6 +6,9 @@ RSpec.describe Player do
     it 'initializes player variables' do
       expect(@p1_array).to eq(nil)
     end
+    it 'does not add a value to variable' do
+      expect(@p2_array).to eq(nil)
+    end
   end
 end
 
@@ -13,6 +16,9 @@ RSpec.describe Board do
   @board = Board.new
   describe 'board' do
     it 'initializes the board' do
+      expect(@board).to eq(nil)
+    end
+    it 'does not print the board' do
       expect(@board).to eq(nil)
     end
   end
